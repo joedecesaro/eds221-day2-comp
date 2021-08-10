@@ -1,0 +1,110 @@
+---
+title: "making and indexing data in R"
+author: "Joe DeCesaro"
+date: "8/10/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(palmerpenguins)
+```
+
+## Make some vectors and check them out
+```{r}
+dogs <- c("teddy", "khora", "waffle", "banjo")
+
+#check the class:
+class(dogs)
+
+```
+
+```{r}
+dog_age <- c(1.4, 5.2, 6, 10)
+class(dog_age)
+typeof(dog_age)
+```
+
+
+```{r}
+dog_miles <- c(4L, 5L, 6L, 4L)
+class(dog_miles)
+typeof(dog_miles)
+
+is.character(dog_miles)
+is.character(dogs)
+```
+
+```{r}
+dog_food <- c(teddy = "purina", 
+              khora = "alpo", 
+              waffle = "fancy feast", 
+              banjo = "blue diamond")
+dog_food
+class(dog_food)
+
+khora_food <- dog_food[2]
+dog_food["khora"]
+
+dog_size <- c(teddy= 50, khora = 55)
+
+test <- dog_size[2] + 6
+test
+```
+
+```{r}
+cars <- c( "red", "white", "yellow", "silver", "blue", "black", "purple", "green", "gray")
+
+cars[2:5]
+
+i <- 3
+
+cars[3]
+
+i <- c(1, 5, 7)
+
+cars[i]
+
+cars[3] <- "BURRITOS"
+```
+
+## Lists in R
+Vectors are homogenous, lists do not have to be
+```{r}
+urchins <- list("blue", c(1, 2, 3), 
+                seq(from = 0, to = 50, by = 0.5),
+                1200L)
+urchins
+
+urchins[[1]]
+urchins[1]
+
+# single brackt returns a list of the element pulled, if double brackets are used it will pull just the contents of that first position.
+```
+
+```{r}
+tacos <- list(topping = c("onion", "cilantro", "gucamole"), 
+              filling = c("beans", "meat", "veggies"), 
+              price = c(6.75, 8.25, 9.50))
+tacos
+
+taco_price <- tacos[["price"]]
+
+tacos$filling
+```
+
+## Data Frames
+```{r}
+fruit <- data.frame(type = c("apple", "banana", "peach"),
+                    mass = c(130, 195, 150))
+
+fruit
+class(fruit)
+class(fruit$mass)
+
+fruit$type
+fruit[, 1]
+
+
+```
